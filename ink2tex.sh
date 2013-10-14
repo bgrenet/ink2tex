@@ -2,13 +2,14 @@
 
 usage="Usage: $(basename $0) [OPTIONS] [file1.svg|dir1] [file2.svg|dir2] [...]"
 
-if [ $(which inkscape 2>/dev/null) ]; 
+inkscape=inkscape
+
+if ! (which $inkscape >/dev/null 2>&1); 
 then 
     echo "Inkscape is required!"; 
     exit 1; 
 fi
 
-inkscape=inkscape
 
 force=0
 log=0
@@ -173,7 +174,7 @@ for svg in $list; do
     if [ ! -e $dir/$outdir ]; then mkdir $dir/$outdir; fi
 
 # If there is some text, use LaTeX export (useless if no text!)
-    if [ -n "$(grep 'id="text' $svg)" ]; then latex="--export-latex"; fi
+    if [ -n "$(grep 'id=\"text' $svg)" ]; then latex="--export-latex"; fi
 
 # Export first in PS+LaTeX 
     if [ $outps -eq 1 ] || [ $outeps -eq 1 ]; then
