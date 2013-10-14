@@ -3,6 +3,8 @@ ink2tex
 
 SVG to [PDF|PS|EPS] + LaTeX using Inkscape
 
+This bash script is a wrapper for using the command-line version of inkscape to export to [PDF|SP|EPS]+LaTeX.
+
 ###Usage
 
 
